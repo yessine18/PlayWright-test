@@ -144,35 +144,35 @@
 <body>
   <div class="container">
     <!-- Login Area -->
-    <div id="loginArea">
+    <div id="loginArea" data-test-id="login-area">
       <h1>Playwright Test Playground</h1>
-      <form id="loginForm">
+      <form id="loginForm" data-test-id="login-form">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required>
+          <input type="text" id="username" name="username" data-test-id="username-input" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" data-test-id="password-input" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" data-test-id="login-button">Login</button>
       </form>
-      <div id="loginMsg"></div>
+      <div id="loginMsg" data-test-id="login-message" role="status" aria-live="polite"></div>
     </div>
 
     <!-- App Area (hidden by default) -->
-    <div id="appArea" class="hidden">
+    <div id="appArea" class="hidden" data-test-id="app-area">
       <div class="app-header">
         <h2>Todo List</h2>
-        <button id="logoutBtn" class="secondary-btn">Logout</button>
+        <button id="logoutBtn" class="secondary-btn" data-test-id="logout-button">Logout</button>
       </div>
       
-      <form id="todoForm" class="todo-form">
-        <input type="text" id="todoInput" placeholder="Add a new todo..." required>
-        <button type="submit">Add</button>
+      <form id="todoForm" class="todo-form" data-test-id="todo-form">
+        <input type="text" id="todoInput" placeholder="Add a new todo..." data-test-id="todo-input" required>
+        <button type="submit" data-test-id="add-todo-button">Add</button>
       </form>
       
-      <ul id="todoList" class="todo-list"></ul>
+      <ul id="todoList" class="todo-list" data-test-id="todo-list" role="list"></ul>
     </div>
   </div>
 

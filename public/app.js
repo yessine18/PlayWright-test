@@ -104,13 +104,17 @@ function renderTodos(todos) {
     const li = document.createElement('li');
     li.className = 'todo-item';
     li.setAttribute('data-testid', `todo-${index}`);
+    li.setAttribute('data-test-id', `todo-item-${index}`);
+    li.setAttribute('role', 'listitem');
     
     const span = document.createElement('span');
     span.textContent = todo;
+    span.setAttribute('data-test-id', `todo-text-${index}`);
     
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.className = 'secondary-btn';
+    deleteBtn.setAttribute('data-test-id', `delete-todo-${index}`);
     deleteBtn.onclick = () => deleteTodo(index);
     
     li.appendChild(span);
