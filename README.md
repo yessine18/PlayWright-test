@@ -1,6 +1,6 @@
 # Playwright Test Playground
 
-A minimal Node.js web application with a **comprehensive Playwright test suite**. This project demonstrates best practices for E2E testing, including smoke tests, integration tests, visual regression, accessibility checks, security tests, and more.
+A minimal Node.js web application with a **Playwright test suite**. This project demonstrates best practices for E2E testing, including smoke tests, integration tests, and accessibility checks.
 
 ## About This Project
 
@@ -8,7 +8,7 @@ This is a simple Express-based web app with:
 - **Fake authentication system**: Login with username `user` and password `pw`
 - **Todo list functionality**: Add and delete todos (stored in localStorage)
 - **Clean HTML structure**: All interactive elements have stable IDs and data-test-id attributes for reliable test selectors
-- **Full test coverage**: Comprehensive Playwright test suite covering all major scenarios
+- **Test coverage**: Playwright test suite covering authentication, core features, form validation, and accessibility
 
 ## Installation
 
@@ -90,13 +90,13 @@ The following stable IDs and data-test-id attributes are available for writing P
 │   │   ├── test-helpers.js # Reusable test utilities and selectors
 │   │   └── fixtures.js     # Custom Playwright fixtures
 │   ├── smoke/
-│   │   └── auth.spec.js    # Smoke tests for authentication (10 tests)
+│   │   └── auth.spec.js    # Smoke tests for authentication (9 tests)
 │   ├── e2e/
 │   │   └── todo.spec.js    # End-to-end todo functionality tests (12 tests)
 │   ├── integration/
-│   │   └── form.spec.js    # Form validation tests (15+ tests)
+│   │   └── form.spec.js    # Form validation tests (8 tests)
 │   └── a11y/
-│       └── a11y.spec.js    # Basic accessibility tests (4 tests)
+│       └── a11y.spec.js    # Basic accessibility tests (3 tests)
 ├── server.js                # Express server
 ├── package.json             # Dependencies and test scripts
 ├── playwright.config.js     # Playwright configuration
@@ -149,7 +149,6 @@ npx playwright test tests/smoke/auth.spec.js
 # Run tests for specific browser
 npx playwright test --project=chromium
 npx playwright test --project=firefox
-npx playwright test --project=webkit
 
 # Run tests in debug mode
 npx playwright test --debug
@@ -171,16 +170,16 @@ npm run test:ci
 
 ### Test Suites Overview
 
-This project includes **~40 total tests** covering essential functionality:
+This project includes **32 tests** covering essential functionality:
 
 | Suite | Description | Test Count |
 |-------|-------------|------------|
-| **smoke/auth.spec.js** | Core authentication: login, logout, session persistence | 10 tests |
+| **smoke/auth.spec.js** | Core authentication: login, logout, session persistence | 9 tests |
 | **e2e/todo.spec.js** | Complete todo flows: add, delete, persistence, multiple items | 12 tests |
-| **integration/form.spec.js** | Form validation, keyboard navigation, required fields | 15 tests |
-| **a11y/a11y.spec.js** | Basic accessibility: axe-core checks, keyboard nav, labels | 4 tests |
+| **integration/form.spec.js** | Form validation, keyboard navigation, required fields | 8 tests |
+| **a11y/a11y.spec.js** | Keyboard navigation, labels, page title | 3 tests |
 
-**Total: ~41 tests** covering authentication, core features, form validation, and accessibility basics.
+**Total: 32 tests** × 2 browsers (Chromium, Firefox) = **64 test runs** covering authentication, core features, form validation, and accessibility basics.
 
 ### Debugging Tests
 
@@ -209,7 +208,6 @@ Tests automatically generate artifacts on failure:
 Artifacts are stored in:
 - `test-results/` - Test execution artifacts
 - `playwright-report/` - HTML report
-- `tests/__snapshots__/` - Visual regression baseline images
 
 ### CI/CD Integration
 
@@ -219,7 +217,7 @@ Tests run automatically on:
 
 The CI workflow:
 1. Runs smoke tests across all browsers
-2. Executes full test suite in matrix (chromium, firefox, webkit)
+2. Executes full test suite in matrix (chromium, firefox)
 3. Uploads test reports and artifacts
 4. Publishes results as GitHub Actions artifacts
 
@@ -239,7 +237,6 @@ Explore the test files to learn:
 - How to structure Playwright tests
 - Best practices for selectors and fixtures
 - Patterns for authentication and state management
-- Visual regression and accessibility testing
-- Performance measurement and security validation
+- Form validation and accessibility testing
 
 Happy testing! 🎭
