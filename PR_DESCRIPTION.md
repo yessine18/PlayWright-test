@@ -80,13 +80,6 @@ GitHub Actions automatically runs tests on push/PR:
 - ✅ Keyboard navigation works
 - ✅ Labels properly associated
 
-## 🎓 Perfect for School Projects
-This demonstrates:
-- ✅ Modern E2E testing practices
-- ✅ Cross-browser compatibility
-- ✅ CI/CD integration
-- ✅ Accessibility awareness
-- ✅ Clean, maintainable test code
 
 ---
 
