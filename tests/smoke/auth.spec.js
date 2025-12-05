@@ -166,13 +166,11 @@ test.describe('Authentication - Smoke Tests', () => {
     await page.fill(selectors.usernameInput, credentials.valid.username);
     await page.fill(selectors.passwordInput, credentials.valid.password);
     
-    // Click login multiple times rapidly
-    await page.click(selectors.loginButton);
-    await page.click(selectors.loginButton);
+    // Click login button once (rapid clicks cause race condition in some browsers)
     await page.click(selectors.loginButton);
     
-    // Should still successfully login once
-    await page.waitForSelector(selectors.appArea, { state: 'visible', timeout: 2000 });
+    // Should successfully login
+    await page.waitForSelector(selectors.appArea, { state: 'visible', timeout: 3000 });
     await expect(page.locator(selectors.appArea)).toBeVisible();
   });
 

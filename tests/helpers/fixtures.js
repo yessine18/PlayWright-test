@@ -3,7 +3,7 @@
  * Extends base test with authentication and cleanup utilities
  */
 
-const { test as base, expect } = require('@playwright/test');
+const base = require('@playwright/test');
 const { 
   clearStorage, 
   loginAndWaitForApp, 
@@ -14,7 +14,7 @@ const {
 /**
  * Extended test with custom fixtures
  */
-const test = base.extend({
+const test = base.test.extend({
   /**
    * Authenticated page fixture - automatically logs in before each test
    */
@@ -55,4 +55,4 @@ async function setupAuthState(browser) {
   }
 }
 
-module.exports = { test, expect, setupAuthState };
+module.exports = { test, expect: base.expect, setupAuthState };
