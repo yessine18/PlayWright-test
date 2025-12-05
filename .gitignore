@@ -20,3 +20,21 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# Test artifacts and reports
+test-results/
+playwright-report/
+playwright/.cache/
+tests/__snapshots__/**/*.png
+tests/__snapshots__/**/*.jpeg
+
+# Keep snapshot base images but ignore diffs
+!tests/__snapshots__/**/
+
+# Test output
+*.png-actual.png
+*.png-diff.png
+*.png-expected.png
+
+# Test state
+tests/helpers/auth-state.json
