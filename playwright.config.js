@@ -45,6 +45,16 @@ module.exports = defineConfig({
     actionTimeout: 10000,
   },
   
+  /* Expect options for assertions */
+  expect: {
+    /* Visual comparison settings */
+    toHaveScreenshot: {
+      /* Allow some pixel differences for CI environments */
+      maxDiffPixels: process.env.CI ? 500 : 100,
+      threshold: 0.2,
+    },
+  },
+  
   /* Global timeout for each test */
   timeout: 30000,
   

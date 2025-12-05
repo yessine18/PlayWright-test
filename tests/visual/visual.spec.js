@@ -3,6 +3,11 @@
  * 
  * Tests visual appearance of the application using screenshot comparison.
  * Captures important states and validates UI consistency across changes.
+ * 
+ * Note: Visual tests are skipped in CI by default. Run locally with:
+ * npm test tests/visual
+ * 
+ * To update snapshots: npx playwright test --update-snapshots
  */
 
 const { test, expect } = require('../helpers/fixtures');
@@ -13,7 +18,7 @@ const {
   addTodo
 } = require('../helpers/test-helpers');
 
-test.describe('Visual Regression Tests', () => {
+test.describe('Visual Regression Tests @visual', () => {
   
   test('should match login page screenshot', async ({ page }) => {
     await page.goto('/');

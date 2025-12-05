@@ -55,7 +55,7 @@ loginForm.addEventListener('submit', (e) => {
   const password = passwordInput.value;
   
   // Fake authentication
-  if (username === VALID_CREDENTIALS.username && password === VALID_CREDENTIALS.password) {
+if (username === VALID_CREDENTIALS.username && password === VALID_CREDENTIALS.password) {
     // Successful login
     localStorage.setItem(STORAGE_KEYS.LOGGED_IN, 'true');
     loginMsg.textContent = 'Login successful!';

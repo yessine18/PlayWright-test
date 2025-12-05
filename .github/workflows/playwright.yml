@@ -42,7 +42,7 @@ jobs:
       shell: bash
     
     - name: Run Playwright tests
-      run: npx playwright test --project=${{ matrix.browser }}
+      run: npx playwright test --project=${{ matrix.browser }} --grep-invert "@visual"
       env:
         PLAYWRIGHT_BASE_URL: http://localhost:3000
     

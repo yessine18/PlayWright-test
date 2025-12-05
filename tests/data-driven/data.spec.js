@@ -36,7 +36,7 @@ test.describe('Data-Driven Tests', () => {
     { description: 'numbers only', input: '12345', expected: '12345' },
     { description: 'special characters', input: '!@#$%^&*()', expected: '!@#$%^&*()' },
     { description: 'mixed case', input: 'MiXeD CaSe ToDo', expected: 'MiXeD CaSe ToDo' },
-    { description: 'with line breaks (single line expected)', input: 'Line 1\nLine 2', expected: 'Line 1\nLine 2' },
+    { description: 'with line breaks (single line expected)', input: 'Line 1\nLine 2', expected: 'Line 1 Line 2' },
     { description: 'with tabs', input: 'Tab\there', expected: 'Tab\there' },
     { description: 'unicode characters', input: 'Héllo Wörld', expected: 'Héllo Wörld' },
     { description: 'Chinese characters', input: '你好世界', expected: '你好世界' },

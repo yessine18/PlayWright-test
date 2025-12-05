@@ -6,7 +6,7 @@
  */
 
 const { test, expect } = require('../helpers/fixtures');
-const { injectAxe, checkA11y } = require('@axe-core/playwright');
+const AxeBuilder = require('@axe-core/playwright').default;
 const { 
   selectors,
   clearStorage,
@@ -20,14 +20,9 @@ test.describe('Accessibility Tests', () => {
     await page.goto('/');
     await clearStorage(page);
     
-    // Inject axe-core
-    await injectAxe(page);
-    
-    // Run accessibility checks
-    await checkA11y(page, null, {
-      detailedReport: true,
-      detailedReportOptions: { html: true },
-    });
+    // Run accessibility checks with axe
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test('should have no accessibility violations on app page', async ({ page }) => {
@@ -35,14 +30,9 @@ test.describe('Accessibility Tests', () => {
     await clearStorage(page);
     await loginAndWaitForApp(page);
     
-    // Inject axe-core
-    await injectAxe(page);
-    
-    // Run accessibility checks
-    await checkA11y(page, null, {
-      detailedReport: true,
-      detailedReportOptions: { html: true },
-    });
+    // Run accessibility checks with axe
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test('should have no accessibility violations with todos', async ({ page }) => {
@@ -54,14 +44,9 @@ test.describe('Accessibility Tests', () => {
     await addTodo(page, 'Task 1');
     await addTodo(page, 'Task 2');
     
-    // Inject axe-core
-    await injectAxe(page);
-    
-    // Run accessibility checks
-    await checkA11y(page, null, {
-      detailedReport: true,
-      detailedReportOptions: { html: true },
-    });
+    // Run accessibility checks with axe
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test('should have proper ARIA roles on todo list', async ({ page }) => {
@@ -185,15 +170,11 @@ test.describe('Accessibility Tests', () => {
     await page.goto('/');
     await clearStorage(page);
     
-    // Inject axe and check specifically for color contrast
-    await injectAxe(page);
-    
-    await checkA11y(page, null, {
-      detailedReport: true,
-      rules: {
-        'color-contrast': { enabled: true },
-      },
-    });
+    // Run accessibility checks with axe, focusing on color contrast
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test('should have document language set', async ({ page }) => {
