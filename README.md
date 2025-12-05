@@ -90,23 +90,13 @@ The following stable IDs and data-test-id attributes are available for writing P
 │   │   ├── test-helpers.js # Reusable test utilities and selectors
 │   │   └── fixtures.js     # Custom Playwright fixtures
 │   ├── smoke/
-│   │   └── auth.spec.js    # Smoke tests for authentication
+│   │   └── auth.spec.js    # Smoke tests for authentication (10 tests)
 │   ├── e2e/
-│   │   └── todo.spec.js    # End-to-end todo functionality tests
+│   │   └── todo.spec.js    # End-to-end todo functionality tests (12 tests)
 │   ├── integration/
-│   │   └── form.spec.js    # Form validation tests
-│   ├── visual/
-│   │   └── visual.spec.js  # Visual regression tests
-│   ├── a11y/
-│   │   └── a11y.spec.js    # Accessibility tests
-│   ├── data-driven/
-│   │   └── data.spec.js    # Parameterized tests with various inputs
-│   ├── perf/
-│   │   └── simple.spec.js  # Performance timing tests
-│   ├── security/
-│   │   └── injection.spec.js # XSS and injection prevention tests
-│   └── mocking/
-│       └── network.spec.js  # Network interception and mocking tests
+│   │   └── form.spec.js    # Form validation tests (15+ tests)
+│   └── a11y/
+│       └── a11y.spec.js    # Basic accessibility tests (4 tests)
 ├── server.js                # Express server
 ├── package.json             # Dependencies and test scripts
 ├── playwright.config.js     # Playwright configuration
@@ -170,6 +160,7 @@ npx playwright test --ui
 # Run specific test suite
 npx playwright test tests/e2e/
 npx playwright test tests/smoke/
+npx playwright test tests/a11y/
 
 # View HTML test report
 npm run test:report
@@ -180,17 +171,16 @@ npm run test:ci
 
 ### Test Suites Overview
 
+This project includes **~40 total tests** covering essential functionality:
+
 | Suite | Description | Test Count |
 |-------|-------------|------------|
-| **smoke/auth.spec.js** | Core authentication flows: login success/failure, logout, session persistence | 10 tests |
-| **e2e/todo.spec.js** | Complete todo lifecycle: add, delete, persistence, multi-item operations | 12 tests |
-| **integration/form.spec.js** | Form validation, keyboard navigation, input constraints | 15+ tests |
-| **visual/visual.spec.js** | Screenshot comparison for login page, app states, hover effects | 8 tests |
-| **a11y/a11y.spec.js** | Accessibility compliance using axe-core, ARIA attributes, keyboard nav | 15 tests |
-| **data-driven/data.spec.js** | Parameterized tests with special characters, emojis, long text, XSS payloads | 30+ tests |
-| **perf/simple.spec.js** | Performance timing with thresholds for page load, operations | 10 tests |
-| **security/injection.spec.js** | XSS prevention, script injection, HTML sanitization | 15 tests |
-| **mocking/network.spec.js** | Network interception, delays, offline scenarios | 12 tests |
+| **smoke/auth.spec.js** | Core authentication: login, logout, session persistence | 10 tests |
+| **e2e/todo.spec.js** | Complete todo flows: add, delete, persistence, multiple items | 12 tests |
+| **integration/form.spec.js** | Form validation, keyboard navigation, required fields | 15 tests |
+| **a11y/a11y.spec.js** | Basic accessibility: axe-core checks, keyboard nav, labels | 4 tests |
+
+**Total: ~41 tests** covering authentication, core features, form validation, and accessibility basics.
 
 ### Debugging Tests
 
