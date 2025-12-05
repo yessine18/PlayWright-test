@@ -1,7 +1,7 @@
 # Add Playwright Test Suite
 
 ## 📋 Overview
-This PR adds a Playwright test suite with **33 tests** covering authentication, todo functionality, form validation, and basic accessibility.
+This PR adds a Playwright test suite with **32 tests** covering authentication, todo functionality, form validation, and basic accessibility.
 
 ## 🧪 Test Coverage
 
@@ -12,9 +12,9 @@ This PR adds a Playwright test suite with **33 tests** covering authentication, 
 | **Smoke** | `tests/smoke/auth.spec.js` | 9 | Login, logout, session persistence |
 | **E2E** | `tests/e2e/todo.spec.js` | 12 | Todo CRUD operations, persistence |
 | **Integration** | `tests/integration/form.spec.js` | 8 | Form validation, keyboard navigation |
-| **Accessibility** | `tests/a11y/a11y.spec.js` | 4 | Basic a11y checks, keyboard support |
+| **Accessibility** | `tests/a11y/a11y.spec.js` | 3 | Keyboard navigation, labels, page title |
 
-**Total: 33 tests** across 2 browsers (Chromium, Firefox)
+**Total: 32 tests** across 2 browsers (Chromium, Firefox) = **64 test runs**
 
 ## 📦 What's Added
 
@@ -79,14 +79,6 @@ GitHub Actions automatically runs tests on push/PR:
 - ✅ No axe-core violations
 - ✅ Keyboard navigation works
 - ✅ Labels properly associated
-
-## 🎓 Perfect for School Projects
-This demonstrates:
-- ✅ Modern E2E testing practices
-- ✅ Cross-browser compatibility
-- ✅ CI/CD integration
-- ✅ Accessibility awareness
-- ✅ Clean, maintainable test code
 
 ---
 
