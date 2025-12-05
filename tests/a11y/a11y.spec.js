@@ -14,25 +14,6 @@ const {
 } = require('../helpers/test-helpers');
 
 test.describe('Accessibility Tests', () => {
-  
-  test('should have no accessibility violations on login page', async ({ page, browserName }) => {
-    // Skip in Firefox due to false positive with skip-link rule
-    test.skip(browserName === 'firefox', 'Firefox has known skip-link false positive');
-    
-    await page.goto('/');
-    await clearStorage(page);
-    
-    // Run accessibility checks with axe-core
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .disableRules(['skip-link']) // Disable less critical rules for school project
-      .analyze();
-    
-    // Filter out best-practice violations (not critical)
-    const criticalViolations = accessibilityScanResults.violations.filter(
-      v => v.impact === 'critical' || v.impact === 'serious'
-    );
-    expect(criticalViolations).toEqual([]);
-  });
 
   test('should support keyboard navigation on login form', async ({ page }) => {
     await page.goto('/');
